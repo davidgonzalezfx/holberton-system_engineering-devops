@@ -3,11 +3,11 @@
 i=1
 while [ $i -le 10 ]
 do
-    if [ $i -eq 9 ]
+    if [ $i -ne 9 ]
     then
-    echo "Hi"
-    else
 	echo "Holberton School"
+    else
+	echo -e "Holberton School\nHi"
     fi
     i=$((i + 1))
 done
