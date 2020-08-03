@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Connects to Holberton remote server
+ssh -i ~/.ssh/id_rsa ubuntu@35.237.178.155
