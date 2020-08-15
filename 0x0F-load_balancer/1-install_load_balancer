@@ -1,19 +1,18 @@
 #!/usr/bin/env bash
 # Install your load balancer
-apt-get -y update
-apt-get -y install haproxy
+apt-get update -y
+apt-get install -y haproxy
 
 cat >> /etc/haproxy/haproxy.cfg << EOF
 
-frontend
+frontend holbie_front
         bind *:80
-        mode http
         default_backend holbie_back
 
 backend holbie_back
         balance roundrobin
-        server web-01 35.237.178.155 check
-        server web-02 34.74.70.223 check
+        server web-01 35.237.178.155:80 check
+        server web-02 34.74.70.223:80 check
 EOF
 
 service haproxy start
