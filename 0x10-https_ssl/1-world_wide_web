@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
-# world wide web
-
-if [ $# -eq 1 ]
+# Bash script that will display information about subdomains.
+declare -a Subdomain=("www" "lb-01" "web-01" "web-02")
+if (($# == 1))
 then
-    domain_list="www lb-01 web-01 web-02"
+    for val in "${Subdomain[@]}"
+    do
+        echo -n "The subdomain $val is a "
+        dig "$val.$1" | grep -A1 'ANSWER SECTION:' | awk '{printf $4}' | tail -1 
+        echo -n " record and points to "
+        dig "$val.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $5}' | tail -1
+    done
 else
-    domain_list=$2
+    echo -n "The subdomain $2 is a "
+    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk '{printf $4}' | tail -1
+    echo -n " record and points to "
+    dig "$2.$1" | grep -A1 'ANSWER SECTION:' | awk '{print $5}' | tail -1
 fi
-
-for subdomain in $domain_list
-do
-    echo -n "The subdomain $subdomain "
-    dig "$subdomain.$1" | grep -A1 'ANSWER SECTION:' | tail -1 | awk '{ print "is a " $4 " record and points to " $5}'
-done
