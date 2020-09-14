@@ -26,5 +26,5 @@ if __name__ == '__main__':
         writer = csv.writer(file, delimiter=',',
                             quotechar='"', quoting=csv.QUOTE_ALL)
 
-        for todo in json_tasks:
-            writer.writerow(todo)
+        for task in done_tasks:
+            writer.writerow(task)
