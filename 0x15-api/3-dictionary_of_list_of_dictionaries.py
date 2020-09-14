@@ -9,7 +9,7 @@ if __name__ == '__main__':
     base_url = 'https://jsonplaceholder.typicode.com/'
 
     user = '{}users'.format(base_url)
-    res = get(user)
+    res = requests.get(user)
     json_user = res.json()
 
     all_tasks = {}
@@ -18,7 +18,7 @@ if __name__ == '__main__':
         userid = user.get('id')
 
         todos = '{}todos?userId={}'.format(base_url, userid)
-        res = get(todos)
+        res = requests.get(todos)
         json_tasks = res.json()
         tasks = []
 
