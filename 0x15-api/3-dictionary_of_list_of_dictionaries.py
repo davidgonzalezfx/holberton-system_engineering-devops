@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 ''' Export to JSON for all users'''
-from requests import get
-import sys
 import json
+import requests
+import sys
 
 
 if __name__ == '__main__':
