@@ -25,5 +25,5 @@ if __name__ == '__main__':
     user_json = {str(sys.argv[1]): tasks}
     json_file = sys.argv[1] + '.json'
 
-    with open(json_file, model='w', encoding='utf-8') as file:
+    with open(json_file, mode='w', encoding='utf-8') as file:
         json.dump(user_json, file)
