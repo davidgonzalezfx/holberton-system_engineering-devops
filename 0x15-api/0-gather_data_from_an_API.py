@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 ''' Gather data from an API '''
-from requests import get
+import requests
 import sys
 
 
@@ -8,13 +8,13 @@ if __name__ == '__main__':
     base_url = 'https://jsonplaceholder.typicode.com/'
 
     user = '{}users/{}'.format(base_url, sys.argv[1])
-    res = get(user)
+    res = requests.get(user)
     json_user = res.json()
     print('Employee {} is done with tasks'.format(
         json_user.get('name')), end='')
 
     todos = '{}todos?userId={}'.format(base_url, sys.argv[1])
-    res = get(todos)
+    res = requests.get(todos)
     json_tasks = res.json()
     done_tasks = []
 
